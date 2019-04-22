@@ -1,0 +1,416 @@
+Script started on 2019-03-02 14:37:19+0530
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ ssh -p 2220 bandit15[K6@bandit;[K.labs.overthew ire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit16@bandit.labs.overthewire.org's password: 
+Linux bandit 4.18.12 x86_64 GNU/Linux
+               
+      ,----..            ,----,          .---. 
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' ' 
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      : 
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ; 
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"  
+     \   \ .'        ;   |.'       \   \ ;     
+  www. `---` ver     '---' he       '---" ire.org     
+               
+              
+Welcome to OverTheWire!
+
+If you find any problems, please report them to Steven or morla on
+irc.overthewire.org.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames. 
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ and /proc/ is disabled
+  so that users can not snoop on eachother. Files and directories with 
+  easily guessable or short names will be periodically deleted!
+	
+  Please play nice:
+      
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS! 
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro 
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few usefull tools which you can find
+ in the following locations:
+
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /usr/local/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /usr/local/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /usr/local/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+    * checksec.sh (http://www.trapkit.de/tools/checksec.html) in /usr/local/bin/checksec.sh
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ [H[2J]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ nmap -sV[K[Kp 31000-32000 localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2019-03-02 10:08 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00019s latency).
+Not shown: 998 closed ports
+PORT      STATE SERVICE
+31518/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.07 seconds
+]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ s[Kopenssl s_client -connect localhost:3247[K[K518
+140166361543936:error:0200206F:system library:connect:Connection refused:../crypto/bio/b_sock2.c:108:
+140166361543936:error:2008A067:BIO routines:BIO_connect:connect error:../crypto/bio/b_sock2.c:109:
+connect:errno=111
+]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ openssl s_client -connect localhost:32518[1P5181518
+CONNECTED(00000003)
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=localhost
+   i:/CN=localhost
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIICBjCCAW+gAwIBAgIEHNiOtjANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMTkwMjI3MDg1MTQ5WhcNMjAwMjI3MDg1MTQ5WjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKfO9YlH
+TfV7c/ex2Y4aaWbC6UXfUiZOuGVDQj3I0ez1KUgolbzeoffB1U0S3sk44VOW18Fw
+u3TPIqJQRsDUj17yUsYUf15Hd3uh7ZI2vEAOpxyZ53v3pf80jb2sAF4udwazb8Mq
+ldmvBk9g4ilYeQfUChXYupspjS0dZEZdtQLpAgMBAAGjZTBjMBQGA1UdEQQNMAuC
+CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+DQEBBQUAA4GBACEdSXNnXvcyDDz87GR078YX8TufCbsv8M4OAvQx6dxOUP+nlkY2
+ZEu+vint90M46deLdiYr2b4GOZd4f4a9Of3pGlUvxWAsLMgEG7W62hy4OctxIaP1
+6GXJPnxAcURKZgG7s9y5HME5byT/3r54KREObiKQDZ1OFtMF0C86nWsS
+-----END CERTIFICATE-----
+subject=/CN=localhost
+issuer=/CN=localhost
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1019 bytes and written 269 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 1024 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: FE4526E7ED343DBEDA4C93AAC59BC1DFB8366D3D86E3C99EF8047068E847A801
+    Session-ID-ctx: 
+    Master-Key: E1B2198F702976834AC7601F57ED503E56C478D261E357C76761257F8EFA36911BDFA046C4102AB7AA36426EF0464329
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 70 37 95 f3 91 95 bc 8b-59 fa 21 4a 9f 31 f1 20   p7......Y.!J.1. 
+    0010 - 62 d9 d3 5e bd 00 be 89-4a 1d c3 67 83 a7 3b 05   b..^....J..g..;.
+    0020 - c2 59 5e a6 17 2f 72 09-6a 80 b3 5b bb fd 22 c7   .Y^../r.j..[..".
+    0030 - 5d 30 ff 32 4c ef 86 5e-9b db 61 ac 3e 07 63 3b   ]0.2L..^..a.>.c;
+    0040 - f0 9a 51 e8 af 1d ef f3-01 7a 08 55 4e c9 79 26   ..Q......z.UN.y&
+    0050 - c6 34 1e 01 97 a2 7f 78-39 83 0d d3 98 90 5f 70   .4.....x9....._p
+    0060 - 0a d3 99 62 40 89 f3 38-24 e8 9c 33 23 6c 1d 8c   ...b@..8$..3#l..
+    0070 - 60 1c 97 de a7 f2 5e d9-c2 02 62 71 fc 8a b8 86   `.....^...bq....
+    0080 - 54 ee 94 5d 07 ff 50 98-65 e0 68 96 0a 78 38 d2   T..]..P.e.h..x8.
+    0090 - 2d 47 12 15 ec 35 a5 00-8d fc 7d 83 11 dc 86 38   -G...5....}....8
+
+    Start Time: 1551517739
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
+---
+cluFn7wTiGryunymYOu4RcffSxQluehd
+cluFn7wTiGryunymYOu4RcffSxQluehd
+^C
+]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ openssl s_client -connect localhost:31518[K[K[K790
+CONNECTED(00000003)
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=localhost
+   i:/CN=localhost
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIICBjCCAW+gAwIBAgIEO6pD2jANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMTkwMjI3MDg1MTQ5WhcNMjAwMjI3MDg1MTQ5WjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJ4ty28M
+uHcN53+52X33Ds4kQKyM4cDL8ImLeyxqFvclYrzrdWCVPlGQ8zMpwZ6ntznBVwZH
+9ftRzkb181BO2XRg/51xBAegy4MQ/+9uw3a+ORvUSPEmJ2MhgVSNTXNLYrWyjv8i
+9v/bRwIcXces+c5Efhe7vFeda86cSRQIn+gRAgMBAAGjZTBjMBQGA1UdEQQNMAuC
+CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+DQEBBQUAA4GBAAWzVYdgS8jlIV3+QuCUND1iZ5I9AGft1uWKjaHyD0PWUKOjee6x
+SBjuFZFUKat9yePfsytrDfEuOIQlbqU3/enCXxGUQbZANIAtr3yBKRA8hOxN4345
+HVUDOVH32kDk0+LXNA1wTfM2aOJNyyGY1yJhH3MrzJN3l6tSxK7T31qI
+-----END CERTIFICATE-----
+subject=/CN=localhost
+issuer=/CN=localhost
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1019 bytes and written 269 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 1024 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: ABD8C05800EFE535DA55A852E03484B0D10C074B6B0058E8F0E886483FFB07A2
+    Session-ID-ctx: 
+    Master-Key: E790471FB83E6A93D2F6C8E36659EA1420C7A2CDB81182A46420E3954BF00822D5501E12C2F688F4D01B9FC64EBDBA54
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - ac 4e 97 f1 e5 7c d8 03-0a 45 12 3d 77 84 62 42   .N...|...E.=w.bB
+    0010 - a7 b0 b6 a2 f1 62 d3 1b-49 f0 5c 86 c1 63 d4 c2   .....b..I.\..c..
+    0020 - fd 29 89 71 c2 29 61 06-4c 19 b1 f4 fd 90 7b 7f   .).q.)a.L.....{.
+    0030 - 2a f7 e6 6d c6 0d a6 88-26 82 66 04 bc b1 53 55   *..m....&.f...SU
+    0040 - b3 4c 02 2b b9 da e7 90-de 02 c0 7f db 72 dc 23   .L.+.........r.#
+    0050 - bd 79 d5 b2 0d 15 2d 2f-f4 4e 8d cd fe 33 1d 8c   .y....-/.N...3..
+    0060 - 63 2b 39 8e cb 84 19 c5-25 ba 2b 45 d0 42 26 68   c+9.....%.+E.B&h
+    0070 - 0a 82 b6 4f ab 44 08 d4-8d 61 b7 98 fc 2f 2b 26   ...O.D...a.../+&
+    0080 - 07 a1 b7 5e 74 fd f7 64-32 8e 94 5e 7f 21 06 ba   ...^t..d2..^.!..
+    0090 - 2d f4 a0 9c da 38 58 59-8d 4f 69 dd be 63 b6 b1   -....8XY.Oi..c..
+
+    Start Time: 1551517768
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
+---
+cluFn7wTiGryunymYOu4RcffSxQluehd
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+
+closed
+]0;bandit16@bandit: ~[01;32mbandit16@bandit[00m:[01;34m~[00m$ ca[K[Kcd /tmp/bandit16
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ rm -rf .
+rm: refusing to remove '.' or '..' directory: skipping '.'
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ rm -rf .[K*
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ cat >> passfor17
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ chmod 7000[K passfor17 
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ ssh -p 22 loc[K[K[Kbandit18[K8[K7@localhost -i passfor17 
+Could not create directory '/home/bandit16/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+Linux bandit 4.18.12 x86_64 GNU/Linux
+               
+      ,----..            ,----,          .---. 
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' ' 
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      : 
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ; 
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"  
+     \   \ .'        ;   |.'       \   \ ;     
+  www. `---` ver     '---' he       '---" ire.org     
+               
+              
+Welcome to OverTheWire!
+
+If you find any problems, please report them to Steven or morla on
+irc.overthewire.org.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames. 
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ and /proc/ is disabled
+  so that users can not snoop on eachother. Files and directories with 
+  easily guessable or short names will be periodically deleted!
+	
+  Please play nice:
+      
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS! 
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro 
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few usefull tools which you can find
+ in the following locations:
+
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /usr/local/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /usr/local/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /usr/local/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+    * checksec.sh (http://www.trapkit.de/tools/checksec.html) in /usr/local/bin/checksec.sh
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ cat /etc/bandit_pass/banit[K[Kdit17
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ exit
+logout
+Connection to localhost closed.
+]0;bandit16@bandit: /tmp/bandit16[01;32mbandit16@bandit[00m:[01;34m/tmp/bandit16[00m$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ exit
+exit
+
+Script done on 2019-03-02 14:40:40+0530

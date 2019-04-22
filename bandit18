@@ -1,0 +1,15 @@
+Script started on 2019-03-02 15:41:26+0530
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ ssh ba[K[K-p 20[K20[K20 bandit18@over[K[K[K[Kbandit.ov[K[Klabs.overthewire.org ls
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org's password: 
+readme
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ ssh -p 2220 bandit18@bandit.labs.overthewire.org ls[K[Kcat readme
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org's password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ exit
+exit
+
+Script done on 2019-03-02 15:42:10+0530

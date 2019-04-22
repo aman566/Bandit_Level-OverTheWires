@@ -1,0 +1,113 @@
+Script started on 2019-03-02 11:01:24+0530
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ cat Documents/bannditLevelsTypescript/bandit9[1Pit9[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ ssh -p 2220 bandit10@bandit.labs.overthewire.org[A]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ [5Prm bandit10
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cssh -p 2220 bandiit10@bandit.labs.overthewire.org[C[C[C[1P@bandit.labs.overthewire.org[C[C[C1@bandit.labs.overthewire.org[C[C[C[C
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit11@bandit.labs.overthewire.org's password: 
+Linux bandit 4.18.12 x86_64 GNU/Linux
+               
+      ,----..            ,----,          .---. 
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' ' 
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      : 
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ; 
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"  
+     \   \ .'        ;   |.'       \   \ ;     
+  www. `---` ver     '---' he       '---" ire.org     
+               
+              
+Welcome to OverTheWire!
+
+If you find any problems, please report them to Steven or morla on
+irc.overthewire.org.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames. 
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ and /proc/ is disabled
+  so that users can not snoop on eachother. Files and directories with 
+  easily guessable or short names will be periodically deleted!
+	
+  Please play nice:
+      
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS! 
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro 
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few usefull tools which you can find
+ in the following locations:
+
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /usr/local/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /usr/local/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /usr/local/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+    * checksec.sh (http://www.trapkit.de/tools/checksec.html) in /usr/local/bin/checksec.sh
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ [H[2J]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cat 
+.bash_logout  .bashrc       data.txt      .profile      
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cat data.txt [H[2J]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cat data.txt  [K| tr 'A-Za-Z[Kz' ;N-ZA-M[C[1PN-ZA-M;N-ZA-M[C[C[C[C[C[C[1PN-ZA-M'N-ZA-M[C[C[C[C[C[Cn-za-m'[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[C[1P[1@c[1@a[C[1@t[1@ [1@d[1@a[C[1@t[5@a.txt[1@ [1@>[1@ 
+-bash: tr: Permission denied
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cat data.txt > tr 'A-Za-z' 'N-ZA-Mn-za-m'[1@>[1@>[1P
+-bash: syntax error near unexpected token `>'
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ ls
+data.txt
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cast [K[K[Kt data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ cat data.txt ls[Kcat data.txt >>>tr 'A-Za-z' 'N-ZA-Mn-za-m'[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C data.txt 
+tr: extra operand ‘data.txt’
+Try 'tr --help' for more information.
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ tr 'A-Za-z' 'N-ZA-Mn-za-m' data.txt [1@<[1@ 
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+]0;bandit11@bandit: ~[01;32mbandit11@bandit[00m:[01;34m~[00m$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+]0;am4n@am4n-HP-ProBook-450-G4: ~/Documents/banditLevelsTypescript[01;32mam4n@am4n-HP-ProBook-450-G4[00m:[01;34m~/Documents/banditLevelsTypescript[00m$ exit
+exit
+
+Script done on 2019-03-02 11:03:50+0530
